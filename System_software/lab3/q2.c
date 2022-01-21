@@ -1,14 +1,3 @@
-// Write a C program to identify whether a given line is a comment or not.
-// A comment is a line of text that starts with a // character.
-// The program should take a line of text from the user and determine whether
-// it is a comment or not.
-// If it is a comment, the program should display a message indicating that
-// the line is a comment.
-// If it is not a comment, the program should display a message indicating
-// that the line is not a comment.
-// The program should also display a message indicating that the program is
-// finished.
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
