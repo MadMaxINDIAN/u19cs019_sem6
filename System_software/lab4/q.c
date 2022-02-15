@@ -1,3 +1,5 @@
+// a* a*b+ abb
+
 #include <stdio.h>
 // #include<conio.h>
 #include <string.h>
