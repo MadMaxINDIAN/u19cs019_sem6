@@ -1,27 +1,45 @@
-// Design and implement a C++ program that defines a base class A, which has a subclass B,
-//  which itself has a subclass C. The A class must implement a method, which is 
-// overridden in both B and C. You must also write a test class that instantiates A, B, 
-// and C and includes three calls to the method. One of the calls must be statically bound 
-// to A’s method. One call must be dynamically bound to B’s method, and one must be 
-// dynamically bound to C’s method. All of the method calls must be through a pointer to 
-// class A.
-
 #include <iostream>
-#include <bits/stdc++.h>
 
 using namespace std;
 
-class A {
-    public:
-    int dummy_method(int x) {
-        return x * x;
+class A
+{
+public:
+    virtual void print()
+    {
+        cout << "\nA\n";
     }
 };
 
-class B: public A {};
+class B : public A
+{
+public:
+    void print()
+    {
+        cout << "\nB\n";
+    }
+};
 
-class C: public B {};
+class C : public B
+{
+public:
+    void print()
+    {
+        cout << "\nC\n";
+    }
+};
 
-int main () {
+int main()
+{
+    A a, *test;
+    B b;
+    C c;
+    a.print(); // statically bound to A
+    test = &a;
+    test->print();
+    test = &b;
+    test->print(); // dynamically bound to B
+    test = &c;
+    test->print(); // dynamically bound to C
     return 0;
 }
