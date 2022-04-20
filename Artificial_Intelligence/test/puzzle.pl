@@ -175,9 +175,36 @@ getHeuristic([_|T1],H,[_|T2]):-
 
 % prints the path from start state to goal state
 printsolution([State, null, PC, H, TC],_):-
-      write(State), write(' PC: '), write(PC), write(' H:'), write(H), write(' TC: '), write(TC), nl.
+      print_element(State, 0), write(' PC: '), write(PC), write(' H:'), write(H), write(' TC: '), write(TC), nl, write("*********************"), nl.
 
 printsolution([State, Parent, PC, H, TC], Closed):-
       member([Parent, GrandParent, PC1, H1, TC1], Closed),
       printsolution([Parent, GrandParent, PC1, H1, TC1], Closed),
-      write(Parent),	write(State), write(' !!PC: '), write(PC), write(' H:'), write(H), write(' TC: '), write(TC), nl.
+      print_element(Parent, 0), nl,	print_element(State, 0), write(' PC: '), write(PC), write(' H:'), write(H), write(' TC: '), write(TC), nl, write("*********************"), nl.
+
+print_element([],_).
+
+print_element([Head|Tail],I):-
+	0 is mod(I,3),
+	Newi=I+1,
+	nl,
+	print(Head),
+	print_element(Tail,Newi).
+
+print_element([Head|Tail],I):-
+	Newi=I+1,
+	print(Head),
+	print_element(Tail,Newi).
+
+
+print_list([],_).
+
+print_list([Head|Tail],I):-
+	number(Head),
+	print_list(Tail,I).
+
+print_list([Head|Tail],I):-
+	Newi=I+1,
+	print_list(Tail,Newi),
+	print_element(Head,0),
+	nl.
