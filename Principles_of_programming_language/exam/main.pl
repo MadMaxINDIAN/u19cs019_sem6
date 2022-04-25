@@ -1,17 +1,17 @@
 memCount(_, [], 0).
 
-memCount(Alist, [H|T], R) :-
-    is_list(H), !,
-    memCount(Alist, H, R1),
-    memCount(Alist, T, R2),
-    R is R1 + R2.
+memCount(Alist, [Head|Tail], Result) :-
+    is_list(Head), !,
+    memCount(Alist, Head, Result1),
+    memCount(Alist, Tail, Result2),
+    Result is Result1 + Result2.
 
-memCount(Alist, [Alist|T], R) :-
-    memCount(Alist, T, R1),
-    R is R1 + 1.
+memCount(Alist, [Alist|Tail], Result) :-
+    memCount(Alist, Tail, Result1),
+    Result is Result1 + 1.
 
-memCount(Alist, [_|T], N) :-
-    memCount(Alist, T, N).
+memCount(Alist, [_|Tail], Result) :-
+    memCount(Alist, Tail, Result).
 
 main(Char, Alist) :-
     memCount(Char, Alist, N),
